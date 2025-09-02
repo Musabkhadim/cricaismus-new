@@ -23,14 +23,14 @@ body {
     background-size: 20px 20px;
   }
 }
+
 a {
   @apply no-underline !important;
   text-decoration: none !important;
 }
 
 @layer base {
-  
-    :root {
+  :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -65,10 +65,7 @@ a {
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-  
-
-  
-}
+};
 
 @layer base {
   * {
@@ -167,12 +164,9 @@ a {
 
   /* Glass morphism effect */
   .glass {
-    @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border border-white/20 dark:border-gray-700/20;
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
   }
-}
-
-
-
+};
 
 /* Light mode CKEditor enhancements */
 .ck-editor__editable {
@@ -220,5 +214,5 @@ a {
 
 /* Focus styles */
 .focus-visible {
-  @apply outline-none ring-2 ring-blue-500 ring-offset-2 dark:ring-offset-gray-900;
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
 }

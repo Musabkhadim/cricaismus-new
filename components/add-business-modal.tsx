@@ -243,7 +243,7 @@ export function AddBusinessModal({ open, onOpenChange }: AddBusinessModalProps) 
         }
       }
       // Prepare data for Firestore
-      const documentId = crypto.randomUUID()
+      const documentId = sanitizeDocumentId(formData.businessName) // <-- Use slug as custom ID
       const firestoreData = {
         businessName: formData.businessName,
         category: formData.category,

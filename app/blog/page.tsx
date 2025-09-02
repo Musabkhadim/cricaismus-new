@@ -12,6 +12,7 @@ import { db } from "../firebase/config"
 
 
 
+
 const categories = ["All Categories", "Business Tips", "Marketing", "Customer Service", "Finance", "Technology"]
 
 export default function BlogPage() {

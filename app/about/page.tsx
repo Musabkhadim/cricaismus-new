@@ -9,6 +9,99 @@ import { LoginModal } from "@/components/login-modal"
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
+import { Metadata } from "next"
+
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://cricaismus.com"),
+  title: {
+    default: "Cricaismus - Top Business Directory & Local Business Reviews",
+    template: "%s | Cricaismus",
+  },
+  description:
+    "Find top local businesses in Pakistan with Cricaismus. Get your free business listing, and gain high-quality dofollow backlinks, and improve your SEO. Register your company online today!.",
+  keywords: [
+    "business directory",
+    "best local businesses",
+    "register business online in pakistan",
+    "“free business submission websites in Pakistan",
+    "Top IT Service directory submission",
+    "best free small business listing sites in islamabad",
+    "seo benefits of online listing" ,
+    "business listing in seo",
+    "Add Business page",
+    "Pakistani Restaurants Services submission free",
+    "Add Your Service Free in Pakistan",
+    "dofollow backlinks website list",
+    "it services for small businesses",
+     "High-Quality do follow backlinks site",
+      "Top do follow link submission platforms",
+       "backlinks dofollow",
+        "Find Any Company or Address in Pakistan",
+  ],
+  icons: {
+    icon: [
+      { url: '/favicons.png', sizes: 'any' },
+      { url: '/favicons.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicons.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/favicons.png', sizes: '180x180' },
+    ],
+    other: [
+      {
+        rel: 'mask-icon',
+        url: '/favicons.png',
+        color: '#3b82f6', // Your brand color
+      },
+    ],
+  },
+  authors: [{ name: "Cricaismus Team" }],
+  creator: "Cricaismus",
+  publisher: "Cricaismus",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://cricaismus.com",
+    siteName: "Cricaismus",
+    title: "Cricaismus - Pakistan No 1 Business Directory & Local Business Reviews",
+    description: "Find top local businesses in Pakistan with Cricaismus. Register your business online for free on Cricaismus.Boost your SEO with high-quality dofollow backlinks",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Cricaismus - Business Directory",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cricaismus - Business Directory & Local Business Reviews",
+    description: "Discover the best local businesses across Pakistan on cricaismus. List your business online for free on Cricaismus. Gain powerful dofollow backlinks, and improve your SEO.",
+    images: ["/og-image.jpg"],
+    creator: "@cricaismus",
+  },
+  verification: {
+    google: "google1578af168b9d05d6.html",
+
+  },
+  alternates: {
+    canonical: "https://cricaismus.com",
+  },
+  category: "business",
+}
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },

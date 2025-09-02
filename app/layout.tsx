@@ -10,7 +10,8 @@ import { Footer } from "@/components/footer"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: {
+  metadataBase: new URL("https://cricaismus.com"),
+  title: { 
     default: "Cricaismus - Top Business Directory & Local Business Reviews",
     template: "%s | Cricaismus",
   },
@@ -90,9 +91,8 @@ export const metadata: Metadata = {
     creator: "@cricaismus",
   },
   verification: {
-    google: "your-google-verification-code",
-    yandex: "your-yandex-verification-code",
-    yahoo: "your-yahoo-verification-code",
+    google: "google1578af168b9d05d6",
+
   },
   alternates: {
     canonical: "https://cricaismus.com",

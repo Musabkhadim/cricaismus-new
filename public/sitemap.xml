@@ -7,6 +7,12 @@
     <priority>1.0</priority>
   </url>
   <url>
+   <url>
+    <loc>https://www.cricaismus.com/contact</loc>
+    <lastmod>2025-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
     <loc>https://www.cricaismus.com/directory</loc>
     <lastmod>2025-08-21</lastmod>
     <changefreq>weekly</changefreq>
