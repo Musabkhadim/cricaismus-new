@@ -160,13 +160,14 @@ export function AddBusinessModal({ open, onOpenChange }: AddBusinessModalProps) 
 
   const progress = (currentStep / steps.length) * 100
 
-  // Function to sanitize business name for use as document ID
+  // Function to sanitize business name for use as document ID (slug)
   const sanitizeDocumentId = (businessName: string): string => {
     return businessName
       .trim()
-      .replace(/[^a-zA-Z0-9\s-_]/g, "") // Remove special characters except spaces, hyphens, underscores
-      .replace(/\s+/g, "_") // Replace spaces with underscores
       .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, "") // Remove all non-alphanumeric, non-space, non-hyphen
+      .replace(/\s+/g, "-")         // Replace spaces with hyphens
+      .replace(/-+/g, "-")          // Replace multiple hyphens with single
   }
 
   // Helper to validate email format
@@ -310,7 +311,7 @@ export function AddBusinessModal({ open, onOpenChange }: AddBusinessModalProps) 
         }
       }
       // Prepare data for Firestore
-      const documentId = crypto.randomUUID()
+      const documentId = sanitizeDocumentId(formData.businessName) // <-- Use business name as custom ID
       const firestoreData = {
         businessName: formData.businessName,
         category: formData.category,
@@ -331,6 +332,7 @@ export function AddBusinessModal({ open, onOpenChange }: AddBusinessModalProps) 
         logoUrl,
         imageUrls,
       }
+      
       const docRef = doc(db, "directory", documentId)
       await setDoc(docRef, firestoreData)
       console.log("Business saved successfully with ID:", documentId)
@@ -370,6 +372,7 @@ export function AddBusinessModal({ open, onOpenChange }: AddBusinessModalProps) 
           linkedin: "",
         },
         premiumListing: false,
+          
       })
       setFormData1({
         // Reset formData1 as well
