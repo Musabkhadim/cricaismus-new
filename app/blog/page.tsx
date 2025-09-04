@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
+import Head from "next/head"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,15 +11,33 @@ import Link from "next/link"
 import { collection, getDocs } from "firebase/firestore"
 import { db } from "../firebase/config"
 
+interface BlogPost {
+  id: string
+  title: string
+  description: string
+  category: string
+  imageUrl?: string
+  createdAt?: any
+  content?: string
+}
 
-
-
-const categories = ["All Categories", "Business Tips", "Marketing", "Customer Service", "Finance", "Technology"]
+// const categories = [
+//   "All Categories",
+//   "Business Tips",
+//   "Marketing",
+//   "Customer Service",
+//   "Finance",
+//   "Technology",
+//   "Entrepreneurship",
+//   "Digital Marketing",
+//   "Sales Strategy",
+//   "Leadership",
+// ]
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All Categories")
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
   const postsPerPage = 6
@@ -31,7 +50,7 @@ export default function BlogPage() {
         const data2 = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
-        }))
+        })) as BlogPost[]
         setPosts(data2)
         console.log(data2)
       } catch (error) {
@@ -79,11 +98,35 @@ export default function BlogPage() {
 
   const handlePageClick = (pageNumber: number) => {
     setCurrentPage(pageNumber)
-  };
+  }
 
- 
   return (
     <>
+      <Head>
+        <title>Business Growth Tips & Technology Trends - Expert Insights Blog</title>
+        <meta
+          name="description"
+          content="Discover expert business growth strategies, marketing tips, technology trends, and entrepreneurship insights. Get the latest business advice to help you succeed."
+        />
+        <meta
+          name="keywords"
+          content="business tips, marketing strategies, technology trends, entrepreneurship, digital marketing, business growth, customer service, finance tips, leadership, sales strategy, startup advice, business development"
+        />
+        <meta name="author" content="Business Growth Blog" />
+        <meta property="og:title" content="Business Growth Tips & Technology Trends - Expert Insights Blog" />
+        <meta
+          property="og:description"
+          content="Discover expert business growth strategies, marketing tips, technology trends, and entrepreneurship insights."
+        />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Business Growth Tips & Technology Trends" />
+        <meta
+          name="twitter:description"
+          content="Expert business insights and technology trends to help you succeed."
+        />
+      </Head>
+
       {/* Google Analytics */}
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELRR0GWDL4"></script>
       <script
@@ -112,10 +155,11 @@ export default function BlogPage() {
                   </Badge>
                 </div>
                 <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-                  Business Growth  & Tips
+                  Business Growth & Tips
                 </h1>
                 <p className="text-lg md:text-xl opacity-90 mb-8 max-w-3xl mx-auto leading-relaxed">
-                  Discover  business growth strategies and stay updated with latest technology trends. And get best Business tips and tech trends to help you succeed
+                  Discover business growth strategies and stay updated with latest technology trends. And get best
+                  Business tips and tech trends to help you succeed
                 </p>
               </div>
             </div>
@@ -132,22 +176,19 @@ export default function BlogPage() {
                   <div className="mb-6">
                     <div className="relative">
                       <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-                         
-    <Input
-      placeholder="Search articles, topics, or keywords..."
-      value={searchQuery}
-      onChange={(e) => setSearchQuery(e.target.value)}
-      className="w-full pr-12 pl-4 h-12 text-base bg-gray-50 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:border-indigo-500 dark:focus:border-indigo-400 transition-all duration-200"
-    />
+                      <Input
+                        placeholder="Search articles, topics, or keywords..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full pr-12 pl-4 h-12 text-base bg-gray-50 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:border-indigo-500 dark:focus:border-indigo-400 transition-all duration-200"
+                      />
                     </div>
                   </div>
-
-                  {/* Category Filter */}
                   <div className="flex items-center justify-between">
                     {/* <div className="flex items-center space-x-3">
                       <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">Category:</label>
                       <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                        <SelectTrigger className="w-40 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-lg">
+                        <SelectTrigger className="w-48 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-lg">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -264,7 +305,7 @@ export default function BlogPage() {
   )
 }
 
-function BlogCard({ post }: { post: any }) {
+function BlogCard({ post }: { post: BlogPost }) {
   return (
     <Link href={`/blog/${post.id}`}>
       <Card className="group hover:shadow-2xl transition-all duration-500 bg-white/90 backdrop-blur-sm dark:bg-gray-900/90 border-0 rounded-2xl overflow-hidden hover:-translate-y-2 cursor-pointer">
