@@ -30,7 +30,10 @@ const categories = [
   "Professional",
   "Photography ",
   "Entertainment",
+  "stores & shopes",
+  "Games",
   "other",
+  
 ]
 
 const steps = [

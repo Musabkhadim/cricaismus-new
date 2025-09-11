@@ -226,7 +226,7 @@ export function Footer() {
             <div className="space-y-2 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
-                <span>info@cricaismus.com</span>
+                <span>musabkhadim363@gmail.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4" />
@@ -234,7 +234,7 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4" />
-                <span>Rhmanabad Rawalpindi</span>
+                <span>Rahmanabad Rawalpindi</span>
               </div>
             </div>
           </div>
